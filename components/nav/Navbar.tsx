@@ -83,6 +83,7 @@ export default function Navbar({ locale }: Props) {
 
           <NavLink href={href("/blog")}>{t("blog")}</NavLink>
           <NavLink href={href("/resources")}>{t("resources")}</NavLink>
+          <NavLink href={href("/pricing")}>{t("pricing")}</NavLink>
         </nav>
 
         {/* Right controls */}
@@ -134,6 +135,7 @@ export default function Navbar({ locale }: Props) {
           ))}
           <MobileLink href={href("/blog")} onClick={() => setMobileOpen(false)}>{t("blog")}</MobileLink>
           <MobileLink href={href("/resources")} onClick={() => setMobileOpen(false)}>{t("resources")}</MobileLink>
+          <MobileLink href={href("/pricing")} onClick={() => setMobileOpen(false)}>{t("pricing")}</MobileLink>
         </div>
       )}
     </header>
