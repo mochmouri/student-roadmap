@@ -1,10 +1,9 @@
-"use client";
+import StudioClient from "./StudioClient";
 
-import { NextStudio } from "next-sanity/studio";
-import config from "@/sanity/sanity.config";
+export function generateStaticParams() {
+  return [{ tool: [] }];
+}
 
-// The Sanity Studio is accessible at /studio
-// This route is excluded from i18n middleware via the middleware matcher
 export default function StudioPage() {
-  return <NextStudio config={config} />;
+  return <StudioClient />;
 }

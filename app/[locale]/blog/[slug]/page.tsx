@@ -5,6 +5,16 @@ import { PortableText } from "@portabletext/react";
 import { getBlogEntryBySlug } from "@/sanity/lib/queries";
 import { placeholderBlogEntries } from "@/lib/placeholder-data";
 import { formatDate } from "@/lib/utils";
+import { routing } from "@/lib/i18n-routing";
+
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    placeholderBlogEntries.map((e) => ({
+      locale,
+      slug: e.slug.current,
+    }))
+  );
+}
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;

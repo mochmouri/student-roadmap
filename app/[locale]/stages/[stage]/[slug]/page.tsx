@@ -7,6 +7,17 @@ import { placeholderArticles } from "@/lib/placeholder-data";
 import { SLUG_TO_STAGE, STAGE_SLUGS } from "@/lib/utils";
 import IslamicFinanceCallout from "@/components/ui/IslamicFinanceCallout";
 import ArticleCard from "@/components/ui/ArticleCard";
+import { routing } from "@/lib/i18n-routing";
+
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    placeholderArticles.map((a) => ({
+      locale,
+      stage: STAGE_SLUGS[a.stage] ?? "before-sixth-form",
+      slug: a.slug.current,
+    }))
+  );
+}
 
 interface Props {
   params: Promise<{ locale: string; stage: string; slug: string }>;

@@ -1,7 +1,11 @@
-import { redirect } from "next/navigation";
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-// The root URL redirects to the default locale.
-// next-intl's middleware handles this, but this is a safety fallback.
 export default function RootPage() {
-  redirect("/en");
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/en");
+  }, [router]);
+  return null;
 }
