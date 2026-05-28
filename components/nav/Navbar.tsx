@@ -9,12 +9,14 @@ import SearchBar from "@/components/ui/SearchBar";
 
 interface Props {
   locale: string;
+  isPremium?: boolean;
+  hasBundle?: boolean;
 }
 
 const STAGES = [1, 2, 3, 4, 5];
 const STAGE_SLUGS = ["before-sixth-form", "sixth-form", "applications", "university-life", "building-your-future"];
 
-export default function Navbar({ locale }: Props) {
+export default function Navbar({ locale, isPremium, hasBundle }: Props) {
   const t = useTranslations("nav");
   const [stagesOpen, setStagesOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -84,10 +86,20 @@ export default function Navbar({ locale }: Props) {
           <NavLink href={href("/blog")}>{t("blog")}</NavLink>
           <NavLink href={href("/resources")}>{t("resources")}</NavLink>
           <NavLink href={href("/pricing")}>{t("pricing")}</NavLink>
+          <NavLink href={href("/services")}>{t("services")}</NavLink>
         </nav>
 
         {/* Right controls */}
         <div className="flex items-center gap-2 ms-auto">
+          {(isPremium || hasBundle) && (
+            <Link
+              href={href("/tools")}
+              className="hidden md:inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-sm no-underline transition-opacity hover:opacity-80"
+              style={{ background: "var(--color-accent)", color: "#fff", fontFamily: "var(--font-inter)" }}
+            >
+              Premium
+            </Link>
+          )}
           {searchOpen ? (
             <div className="w-64">
               <SearchBar onClose={() => setSearchOpen(false)} autoFocus />
@@ -136,6 +148,7 @@ export default function Navbar({ locale }: Props) {
           <MobileLink href={href("/blog")} onClick={() => setMobileOpen(false)}>{t("blog")}</MobileLink>
           <MobileLink href={href("/resources")} onClick={() => setMobileOpen(false)}>{t("resources")}</MobileLink>
           <MobileLink href={href("/pricing")} onClick={() => setMobileOpen(false)}>{t("pricing")}</MobileLink>
+          <MobileLink href={href("/services")} onClick={() => setMobileOpen(false)}>{t("services")}</MobileLink>
         </div>
       )}
     </header>

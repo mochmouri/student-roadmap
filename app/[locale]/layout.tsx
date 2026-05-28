@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/lib/i18n-routing";
+import { auth } from "@/auth";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/Footer";
 
@@ -37,7 +38,9 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale);
-  const messages = await getMessages();
+  const [messages, session] = await Promise.all([getMessages(), auth()]);
+  const isPremium = session?.user?.isPremium ?? false;
+  const hasBundle = session?.user?.hasBundle ?? false;
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
@@ -45,7 +48,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <div className="min-h-screen flex flex-col" style={{ backgroundColor: "var(--color-bg)" }}>
-            <Navbar locale={locale} />
+            <Navbar locale={locale} isPremium={isPremium} hasBundle={hasBundle} />
             <main className="flex-1">{children}</main>
             <Footer locale={locale} />
           </div>

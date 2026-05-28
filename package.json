@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/pg-adapter": "^1.11.2",
+    "@google/generative-ai": "^0.24.1",
     "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "@portabletext/react": "^3.2.4",
     "@sanity/client": "^6.29.1",
@@ -26,6 +27,7 @@
     "react-is": "^19.2.6",
     "resend": "^6.12.4",
     "sanity": "^3.99.0",
+    "stripe": "^22.2.0",
     "styled-components": "^6.4.2"
   },
   "devDependencies": {
