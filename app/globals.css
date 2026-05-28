@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ──────────────────────────────────────────── */
+:root {
+  --color-darkest: #5E0006;
+  --color-dark: #9B0F06;
+  --color-accent: #D53E0F;
+  --color-cream: #EED9B9;
+  --color-bg-dark: #0F0A09;
+
+  /* Light mode defaults */
+  --color-bg: var(--color-cream);
+  --color-bg-secondary: #e8ceaa;
+  --color-text-primary: #1a0a09;
+  --color-text-secondary: #4a1f1a;
+  --color-text-heading: var(--color-darkest);
+  --color-border: rgba(94, 0, 6, 0.2);
+  --color-surface: rgba(94, 0, 6, 0.05);
+  --color-surface-hover: rgba(94, 0, 6, 0.09);
+
+  --spacing-section: clamp(3rem, 8vw, 7rem);
+  --spacing-gap: clamp(1.5rem, 3vw, 2.5rem);
+  --radius: 3px;
+}
+
+.dark {
+  --color-bg: var(--color-bg-dark);
+  --color-bg-secondary: #1a100e;
+  --color-text-primary: var(--color-cream);
+  --color-text-secondary: #c9a87a;
+  --color-text-heading: var(--color-cream);
+  --color-border: rgba(238, 217, 185, 0.15);
+  --color-surface: rgba(238, 217, 185, 0.05);
+  --color-surface-hover: rgba(238, 217, 185, 0.09);
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Typography ─────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  color: var(--color-text-heading);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* ─── Borders & dividers ─────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-pad {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .container-prose {
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ─── RTL tweaks ─────────────────────────────────────────────── */
+[dir="rtl"] body {
+  font-family: var(--font-inter), "Noto Sans Arabic", system-ui, sans-serif;
+}
+
+/* ─── Portable text (Sanity) ─────────────────────────────────── */
+.portable-text h2 { font-size: 1.6rem; margin: 2rem 0 0.75rem; }
+.portable-text h3 { font-size: 1.25rem; margin: 1.75rem 0 0.5rem; }
+.portable-text p  { margin: 0 0 1.2rem; }
+.portable-text ul, .portable-text ol { margin: 0 0 1.2rem 1.5rem; }
+.portable-text li { margin-bottom: 0.4rem; }
+.portable-text blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+[dir="rtl"] .portable-text blockquote {
+  border-left: none;
+  border-right: 3px solid var(--color-accent);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
