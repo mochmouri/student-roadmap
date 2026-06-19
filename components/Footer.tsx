@@ -16,7 +16,7 @@ export default function Footer({ locale }: Props) {
       className="border-t mt-auto"
       style={{ borderColor: "var(--color-border)", background: "var(--color-bg-secondary)" }}
     >
-      <div className="max-w-6xl mx-auto px-5 py-10 grid md:grid-cols-3 gap-8">
+      <div className="max-w-6xl mx-auto px-5 py-10 grid md:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
           <p className="font-display text-base font-semibold mb-2" style={{ color: "var(--color-text-heading)" }}>
@@ -42,6 +42,13 @@ export default function Footer({ locale }: Props) {
               Stage {n}
             </FooterLink>
           ))}
+        </nav>
+
+        {/* Legal */}
+        <nav className="flex flex-col gap-2">
+          <FooterLink href={href("/legal/terms")}>Terms of Service</FooterLink>
+          <FooterLink href={href("/legal/privacy")}>Privacy Policy</FooterLink>
+          <FooterLink href={href("/legal/refunds")}>Refund Policy</FooterLink>
         </nav>
       </div>
 
