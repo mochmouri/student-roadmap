@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const PRICES: Record<string, { amount: number; name: string }> = {
-  consultation: { amount: 7500, name: "1:1 Consultation Call (45 min)" },
+  consultation: { amount: 7500, name: "1:1 Consultation Call (30 min)" },
   "ps-edit": { amount: 14900, name: "Personal Statement Editing" },
 };
 
